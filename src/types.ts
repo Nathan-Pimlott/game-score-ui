@@ -1,7 +1,7 @@
 export interface IScoreToCreate {
   name: string;
   score: number;
-  timeToComplete: string;
+  timeToComplete: number;
   finishDate: string;
   playedConsoles: Console[];
   thoughts: string;
