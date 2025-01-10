@@ -1,28 +1,23 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+import { AppBar, Box, Toolbar, Typography } from '@mui/material';
 
 export default () => (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            GameScore
+  <Box sx={{ flexGrow: 1 }}>
+    <AppBar position="static">
+      <Toolbar>
+        <img id="header-logo" src="/src/assets/images/logo.png" style={{ height: 50, width: 50 }} />
+        <Typography
+          id="header-title"
+          variant="h6"
+          component="div"
+          style={{ fontFamily: '"Jersey 15", serif', fontSize: 40 }}>
+          GameScore
+        </Typography>
+        <div style={{ display: 'flex', margin: '20px 0 0 5px' }}>
+          <Typography id="header-subtitle" variant="caption" style={{ margin: 'auto 0 0 0' }}>
+            By {import.meta.env.VITE_USERNAME}
           </Typography>
-        </Toolbar>
-      </AppBar>
-    </Box>
+        </div>
+      </Toolbar>
+    </AppBar>
+  </Box>
 );
