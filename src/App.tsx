@@ -9,9 +9,15 @@ export default function App() {
   const theme = createTheme({
     palette: {
       primary: {
-        main: '#004d40'
+        main: '#5578a1',
+        light: '#d0b6d4'
       },
       secondary: pink
+    },
+    typography: {
+      fontFamily: '"Jost", serif'
+      // h4: { fontWeight: 700, fontSize: 30 },
+      // h3: { fontWeight: 400 }
     }
   });
 

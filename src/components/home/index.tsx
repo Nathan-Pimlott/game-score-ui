@@ -30,11 +30,14 @@ export default () => {
   if (error || !featuredScores.length) return 'An error has occurred: ' + error?.message;
 
   return (
-    <Container style={{ padding: '10px' }}>
-      <Typography variant="h3">Featured Scores</Typography>
-      {featuredScores.map((featuredScore, idx) => {
-        return <FeaturedScore score={featuredScore} key={idx} />;
-      })}
+    <Container style={{ padding: '20px' }}>
+      <Typography variant="h2">Featured Scores</Typography>
+      <Typography variant="h6">Check out some of the games I've been playing recently.</Typography>
+      <div style={{ marginTop: 10 }}>
+        {featuredScores.map((featuredScore, idx) => {
+          return <FeaturedScore score={featuredScore} key={idx} />;
+        })}
+      </div>
     </Container>
   );
 };

@@ -1,20 +1,22 @@
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+import { AppBar, Box, Toolbar, Typography } from '@mui/material';
 
 export default () => (
   <Box sx={{ flexGrow: 1 }}>
     <AppBar position="static">
       <Toolbar>
-        <IconButton size="large" edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
-          <MenuIcon />
-        </IconButton>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+        <img src="/src/assets/images/logo.png" style={{ height: 50, width: 50 }} />
+        <Typography
+          variant="h6"
+          component="div"
+          // sx={{ flexGrow: 1 }}
+          style={{ fontFamily: '"Jersey 15", serif', fontSize: 40 }}>
           GameScore
         </Typography>
+        <div style={{ display: 'flex', margin: '20px 0 0 5px' }}>
+          <Typography variant="caption" style={{ margin: 'auto 0 0 0' }}>
+            By {import.meta.env.VITE_USERNAME}
+          </Typography>
+        </div>
       </Toolbar>
     </AppBar>
   </Box>

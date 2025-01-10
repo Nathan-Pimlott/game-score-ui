@@ -7,8 +7,8 @@ const mockScore = (idx: number): IScore => ({
   id: uuid(),
   name: `Game ${idx}`,
   thoughts: 'Some thoughts...',
-  score: idx % 2 === 0 ? 100 : 20,
-  playedConsoles: ['Switch'],
+  score: idx % 2 === 0 ? 10 : 5,
+  playedConsoles: ['Switch', 'Steam'],
   finishDate: '2024-01-01 12:00:00',
   timeToComplete: 20
 });

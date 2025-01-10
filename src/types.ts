@@ -11,4 +11,4 @@ export interface IScore extends IScoreToCreate {
   id: string;
 }
 
-export type Console = 'Switch' | 'PC' | 'SteamDeck' | 'DS' | 'PS4' | 'Gameboy';
+export type Console = 'Switch' | 'Steam' | 'DS' | 'PS4' | 'Gameboy';
