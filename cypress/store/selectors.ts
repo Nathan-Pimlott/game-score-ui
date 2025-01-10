@@ -1,5 +1,5 @@
 export const selectors = {
-  addButton: 'button[id=add-button]',
-  subtractButton: 'button[id=subtract-button]',
-  currentCount: 'p[id=current-count]'
+  headerLogo: 'img[id=header-logo]',
+  headerTitle: 'div[id=header-title]',
+  headerSubtitle: 'span[id=header-subtitle]'
 };
