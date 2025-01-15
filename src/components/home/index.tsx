@@ -3,8 +3,8 @@ import { useQuery } from '@tanstack/react-query';
 import { Container, Typography } from '@mui/material';
 
 import { getFeaturedScores } from '../../services/score';
-import { FeaturedScore } from '../shared/featuredScore';
-import { FeaturedScoreSkeleton } from '../shared/featuredScoreSkeleton';
+import { FeaturedScore } from '../core/featuredScore';
+import { FeaturedScoreSkeleton } from '../core/featuredScoreSkeleton';
 
 export default () => {
   const {

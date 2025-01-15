@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Container, Tooltip, Typography } from '@mui/material';
 
 import { getScore } from '../../services/score';
-import { ScoreSkeleton } from '../shared/scoreSkeleton';
+import { ScoreSkeleton } from '../core/scoreSkeleton';
 import { useParams } from 'react-router';
 import moment from 'moment';
 

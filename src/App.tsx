@@ -3,8 +3,8 @@ import { createTheme, ThemeProvider } from '@mui/material';
 import { pink } from '@mui/material/colors';
 
 import Routes from './components/routes';
-import AppBar from './core/appBar';
-import Footer from './core/footer';
+import AppBar from './components/core/appBar';
+import Footer from './components/core/footer';
 import { BrowserRouter } from 'react-router';
 
 export default function App() {
