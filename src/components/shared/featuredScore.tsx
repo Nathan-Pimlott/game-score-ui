@@ -15,12 +15,11 @@ export function FeaturedScore({ score }: IProps) {
     <div style={{ paddingTop: 20 }}>
       <Container
         style={{
-          border: '1px solid lightgrey',
           borderRadius: 10,
           overflow: 'hidden',
           padding: 0,
           cursor: 'pointer',
-          backgroundColor: '#d0b6d4'
+          backgroundColor: 'white'
         }}
         onClick={() => {
           navigate(`/score/${score.id}`);
@@ -34,7 +33,7 @@ export function FeaturedScore({ score }: IProps) {
             objectFit: 'cover'
           }}
         />
-        <div style={{ padding: 10 }}>
+        <div style={{ padding: 20 }}>
           <div style={{ display: 'flex', flexDirection: 'row' }}>
             <Typography variant="h4" style={{ flex: 1, margin: 'auto' }}>
               {score.name}

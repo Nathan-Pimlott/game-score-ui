@@ -1,26 +1,23 @@
-import {
-  IScore
-  // IScoreToCreate
-} from '../types';
-import { mockFeaturedScores } from '../utils/mock';
+import { IScore } from '../types';
+import { mockFeaturedScores, mockScores } from '../utils/mock';
 
-// export function getScores(): Promise<IScore[]> {
-//   return [];
-// }
+export async function getScores(): Promise<IScore[]> {
+  return [];
+}
 
-// export function getScore(id: string): Promise<IScore> {
-//   return {};
-// }
+export async function getScore(id: string): Promise<IScore | undefined> {
+  await sleep(1000);
 
-// export function createScore(score: IScoreToCreate): Promise<IScore> {
-//   return {};
-// }
+  return mockScores.find((ms) => ms.id === id);
+}
 
 export async function getFeaturedScores(): Promise<IScore[]> {
-  await await sleep(1000);
-  //do what you need here
+  // This needs removing once we no longer need to simulate delays
+  await sleep(1000);
   return mockFeaturedScores;
 }
+
+// Remove this once linked to the DB.
 function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }

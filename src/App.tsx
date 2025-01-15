@@ -4,6 +4,8 @@ import { pink } from '@mui/material/colors';
 
 import Routes from './components/routes';
 import AppBar from './core/appBar';
+import Footer from './core/footer';
+import { BrowserRouter } from 'react-router';
 
 export default function App() {
   const theme = createTheme({
@@ -16,8 +18,6 @@ export default function App() {
     },
     typography: {
       fontFamily: '"Jost", serif'
-      // h4: { fontWeight: 700, fontSize: 30 },
-      // h3: { fontWeight: 400 }
     }
   });
 
@@ -26,8 +26,13 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <QueryClientProvider client={queryClient}>
-        <AppBar />
-        <Routes />
+        <BrowserRouter>
+          <div style={{ backgroundColor: '#edeff0' }}>
+            <AppBar />
+            <Routes />
+            <Footer />
+          </div>
+        </BrowserRouter>
       </QueryClientProvider>
     </ThemeProvider>
   );
