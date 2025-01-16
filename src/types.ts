@@ -1,3 +1,5 @@
+export type Console = 'Switch' | 'Steam' | 'DS' | 'PS4' | 'Gameboy';
+
 export interface IScore {
   id: string;
   name: string;
@@ -5,7 +7,15 @@ export interface IScore {
   timeToComplete: number;
   finishDate: string;
   playedConsoles: Console[];
-  thoughts: string;
+  thoughts: {
+    overview: string;
+    good: string;
+    bad: string;
+  };
 }
 
-export type Console = 'Switch' | 'Steam' | 'DS' | 'PS4' | 'Gameboy';
+export interface IGenre {
+  id: string;
+  name: string;
+  examples: { id: string; name: string }[];
+}

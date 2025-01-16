@@ -76,7 +76,20 @@ export default () => {
           </div>
         </div>
         <div style={{ marginTop: 10 }}>
-          {score.thoughts.split('\n').map((line, idx) => (
+          <Typography variant="h6">Overview</Typography>
+          {score.thoughts.overview.split('\n').map((line, idx) => (
+            <Typography key={idx} style={{ marginTop: 10 }}>
+              {line}
+            </Typography>
+          ))}
+          <Typography variant="h6">The good</Typography>
+          {score.thoughts.good.split('\n').map((line, idx) => (
+            <Typography key={idx} style={{ marginTop: 10 }}>
+              {line}
+            </Typography>
+          ))}
+          <Typography variant="h6">The bad</Typography>
+          {score.thoughts.bad.split('\n').map((line, idx) => (
             <Typography key={idx} style={{ marginTop: 10 }}>
               {line}
             </Typography>

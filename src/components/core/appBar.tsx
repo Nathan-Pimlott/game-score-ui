@@ -32,13 +32,13 @@ export default () => {
           <div style={{ marginRight: 20, cursor: 'pointer' }} onClick={() => navigate('/')}>
             <Typography>Home</Typography>
           </div>
-          <div style={{ marginRight: 20, cursor: 'pointer' }}>
+          <div style={{ marginRight: 20, cursor: 'pointer' }} onClick={() => navigate('/genres')}>
             <Typography>Genres</Typography>
           </div>
-          <div style={{ marginRight: 20, cursor: 'pointer' }}>
+          <div style={{ marginRight: 20, cursor: 'pointer' }} onClick={() => navigate('/consoles')}>
             <Typography>Consoles</Typography>
           </div>
-          <div style={{ marginRight: 40, cursor: 'pointer' }}>
+          <div style={{ marginRight: 40, cursor: 'pointer' }} onClick={() => navigate('/a-to-z')}>
             <Typography>A-Z</Typography>
           </div>
           <div>
