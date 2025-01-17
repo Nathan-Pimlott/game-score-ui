@@ -1,24 +1,24 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { createTheme, ThemeProvider } from '@mui/material';
-import { pink } from '@mui/material/colors';
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { createTheme, ThemeProvider } from "@mui/material";
+import { pink } from "@mui/material/colors";
 
-import Routes from './components/routes';
-import AppBar from './components/core/appBar';
-import Footer from './components/core/footer';
-import { BrowserRouter } from 'react-router';
+import Routes from "./components/routes";
+import AppBar from "./components/core/appBar";
+import Footer from "./components/core/footer";
+import { BrowserRouter } from "react-router";
 
 export default function App() {
   const theme = createTheme({
     palette: {
       primary: {
-        main: '#5578a1',
-        light: '#d0b6d4'
+        main: "#5578a1",
+        light: "#d0b6d4",
       },
-      secondary: pink
+      secondary: pink,
     },
     typography: {
-      fontFamily: '"Jost", serif'
-    }
+      fontFamily: '"Jost", serif',
+    },
   });
 
   const queryClient = new QueryClient();
@@ -27,7 +27,7 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
-          <div style={{ backgroundColor: '#edeff0' }}>
+          <div style={{ backgroundColor: "#edeff0" }}>
             <AppBar />
             <Routes />
             <Footer />

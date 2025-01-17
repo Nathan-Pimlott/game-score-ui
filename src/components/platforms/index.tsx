@@ -2,37 +2,37 @@ import _ from "lodash";
 import { useQuery } from "@tanstack/react-query";
 import { Container, Grid2 as Grid, Typography } from "@mui/material";
 
-import { getGenres } from "../../services/genre";
+import { getPlatforms } from "../../services/platform";
 import { Loading } from "../core/loading";
-import { Genre } from "./genre";
+import { Platform } from "./platform";
 
 export default () => {
   const {
     isPending,
     error,
-    data: genres,
+    data: platforms,
   } = useQuery({
-    queryKey: ["genres"],
+    queryKey: ["platforms"],
     queryFn: async () => {
-      return await getGenres();
+      return await getPlatforms();
     },
   });
 
   if (isPending) return <Loading />;
 
-  if (error || !genres.length)
+  if (error || !platforms.length)
     return "An error has occurred: " + error?.message;
 
   return (
     <Container style={{ padding: "20px" }}>
-      <Typography variant="h2">Genres</Typography>
+      <Typography variant="h2">Platforms</Typography>
       <Typography variant="h6">
-        See the latest scores from each genre below.
+        Select a platform below to view our top picks.
       </Typography>
       <div style={{ marginTop: 10 }}>
         <Grid container spacing={2}>
-          {genres.map((genre, idx) => {
-            return <Genre genre={genre} key={idx} />;
+          {platforms.map((platform, idx) => {
+            return <Platform platform={platform} key={idx} />;
           })}
         </Grid>
       </div>

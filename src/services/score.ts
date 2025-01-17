@@ -1,5 +1,6 @@
-import { IScore } from '../types';
-import { mockFeaturedScores, mockScores } from '../utils/mock';
+import { IScore } from "../types";
+import { mockFeaturedScores, mockScores } from "../utils/mock";
+import { sleep } from "../utils/sleep";
 
 export async function getScores(): Promise<IScore[]> {
   return [];
@@ -17,7 +18,11 @@ export async function getFeaturedScores(): Promise<IScore[]> {
   return mockFeaturedScores;
 }
 
-// Remove this once linked to the DB.
-function sleep(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
+export async function getScoresByPlatform(
+  platformId: string,
+): Promise<IScore[]> {
+  // This is not ready as platforms are stored as names rather than IDs at the minute. Returning all for now.
+  // return mockScores.filter((score) => score.playedPlatforms.includes(platformId));
+  platformId;
+  return mockScores;
 }

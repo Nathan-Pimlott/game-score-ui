@@ -1,4 +1,4 @@
-export type Console = 'Switch' | 'Steam' | 'DS' | 'PS4' | 'Gameboy';
+export type Platform = "Switch" | "Steam" | "DS" | "PS4" | "Gameboy";
 
 export interface IScore {
   id: string;
@@ -6,7 +6,7 @@ export interface IScore {
   score: number;
   timeToComplete: number;
   finishDate: string;
-  playedConsoles: Console[];
+  playedPlatforms: Platform[];
   thoughts: {
     overview: string;
     good: string;
@@ -18,4 +18,9 @@ export interface IGenre {
   id: string;
   name: string;
   examples: { id: string; name: string }[];
+}
+
+export interface IPlatform {
+  id: string;
+  name: Platform;
 }

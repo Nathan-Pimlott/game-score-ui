@@ -13,12 +13,7 @@ export const Genre = ({ genre }: IProps) => {
     <Grid size={{ xs: 6, md: 4 }} style={{ margin: "20px 0 10px 0" }}>
       <Card
         variant="outlined"
-        style={{
-          height: "100%",
-          borderRadius: 8,
-          border: "none",
-          minHeight: 250,
-        }}
+        style={{ height: "100%", borderRadius: 8, border: "none" }}
       >
         <Typography
           variant="h4"

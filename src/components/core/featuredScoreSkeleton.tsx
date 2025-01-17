@@ -1,4 +1,4 @@
-import { Container, Skeleton } from '@mui/material';
+import { Container, Skeleton } from "@mui/material";
 
 export function FeaturedScoreSkeleton() {
   return (
