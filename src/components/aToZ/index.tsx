@@ -2,27 +2,27 @@ import _ from "lodash";
 import { useQuery } from "@tanstack/react-query";
 import { Container, Tab, Tabs, Typography } from "@mui/material";
 
-import { getGenres } from "../../services/genre";
 import { Loading } from "../core/loading";
 import { useState } from "react";
+import { getScoresByLetter } from "../../services/score";
+import { CompactScore } from "../core/compactScore";
 
 export default () => {
-  const [selectedLetter, setSelectedLetter] = useState("A");
+  const [selectedLetter, setSelectedLetter] = useState("P");
 
   const {
     isPending,
     error,
-    data: genres,
+    data: scoresByLetter,
   } = useQuery({
-    queryKey: ["genres"],
-    queryFn: async () => {
-      return await getGenres();
-    },
+    // This needs to include the selected letter to refetch on change.
+    queryKey: [`scores-by-letter-${selectedLetter}`],
+    queryFn: async () => await getScoresByLetter(selectedLetter),
   });
 
   if (isPending) return <Loading />;
 
-  if (error || !genres.length)
+  if (error || !scoresByLetter.length)
     return "An error has occurred: " + error?.message;
 
   return (
@@ -42,10 +42,15 @@ export default () => {
               label={letter}
               value={letter}
               key={idx}
-              style={{ width: 10 }}
+              style={{ minWidth: 30 }}
             />
           ))}
         </Tabs>
+      </div>
+      <div>
+        {scoresByLetter.map((score, idx) => (
+          <CompactScore score={score} key={idx} />
+        ))}
       </div>
     </Container>
   );

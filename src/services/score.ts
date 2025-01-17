@@ -26,3 +26,7 @@ export async function getScoresByPlatform(
   platformId;
   return mockScores;
 }
+
+export async function getScoresByLetter(letter: string): Promise<IScore[]> {
+  return mockScores.filter((score) => score.name.startsWith(letter));
+}
