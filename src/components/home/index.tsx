@@ -1,43 +1,48 @@
-import _ from 'lodash';
-import { useQuery } from '@tanstack/react-query';
-import { Container, Typography } from '@mui/material';
+import _ from "lodash";
+import { useQuery } from "@tanstack/react-query";
+import { Container, Grid2, Typography } from "@mui/material";
 
-import { getFeaturedScores } from '../../services/score';
-import { FeaturedScore } from '../shared/featuredScore';
-import { FeaturedScoreSkeleton } from '../shared/featuredScoreSkeleton';
+import { getFeaturedScores } from "../../services/score";
+import { FeaturedScore } from "../core/featuredScore";
+import { FeaturedScoreSkeleton } from "../core/featuredScoreSkeleton";
 
 export default () => {
   const {
     isPending,
     error,
-    data: featuredScores
+    data: featuredScores,
   } = useQuery({
-    queryKey: ['featuredScores'],
+    queryKey: ["featuredScores"],
     queryFn: async () => {
       return await getFeaturedScores();
-    }
+    },
   });
 
-  if (isPending)
-    return (
-      <>
-        {_.times(3, () => (
-          <FeaturedScoreSkeleton />
-        ))}
-      </>
-    );
-
-  if (error || !featuredScores.length) return 'An error has occurred: ' + error?.message;
+  if (error) {
+    return <div>Error!</div>;
+  }
 
   return (
-    <Container style={{ padding: '20px' }}>
+    <Container style={{ padding: "20px" }}>
       <Typography variant="h2">Featured Scores</Typography>
-      <Typography variant="h6">Check out some of the games I've been playing recently.</Typography>
-      <div style={{ marginTop: 10 }}>
-        {featuredScores.map((featuredScore, idx) => {
-          return <FeaturedScore score={featuredScore} key={idx} />;
-        })}
-      </div>
+      <Typography variant="h6">
+        Check out some of the games I've been playing recently.
+      </Typography>
+      <Grid2
+        container
+        direction="column"
+        style={{ marginTop: 10 }}
+        sx={{
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        {isPending || !featuredScores
+          ? _.times(3, () => <FeaturedScoreSkeleton />)
+          : featuredScores.map((featuredScore, idx) => (
+              <FeaturedScore score={featuredScore} key={idx} />
+            ))}
+      </Grid2>
     </Container>
   );
 };
