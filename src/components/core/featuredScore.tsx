@@ -12,7 +12,7 @@ export function FeaturedScore({ score }: IProps) {
   const navigate = useNavigate();
 
   return (
-    <Grid size={{ xs: 12, sm: 10, md: 8, lg: 6 }} style={{ paddingTop: 20 }}>
+    <Grid size={{ xs: 12, sm: 10, md: 8, xl: 6 }} style={{ paddingTop: 20 }}>
       <Card
         style={{
           borderRadius: 10,

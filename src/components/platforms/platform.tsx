@@ -1,6 +1,7 @@
-import { Card, colors, Grid2 as Grid, Typography } from "@mui/material";
+import { Card, Grid2 as Grid, Typography } from "@mui/material";
 import { IPlatform } from "../../types";
 import { useNavigate } from "react-router";
+import { theme } from "../../utils/theme";
 
 interface IProps {
   platform: IPlatform;
@@ -40,7 +41,7 @@ export const Platform = ({ platform }: IProps) => {
           style={{
             padding: 10,
             color: "white",
-            backgroundColor: colors.purple["200"],
+            backgroundColor: theme().primary,
             textAlign: "center",
           }}
         >

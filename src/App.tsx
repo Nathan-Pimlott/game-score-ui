@@ -36,7 +36,7 @@ export default function App() {
             }}
           >
             <AppBar />
-            <Container style={{ flex: 1 }}>
+            <Container style={{ flex: 1, padding: 0 }}>
               <Routes />
             </Container>
             <Footer />
