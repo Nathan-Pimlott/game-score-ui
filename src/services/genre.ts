@@ -1,8 +1,10 @@
 import { v4 as uuid } from "uuid";
 
 import { IGenre } from "../types";
+import { sleep } from "../utils/sleep";
 
 export async function getGenres(): Promise<IGenre[]> {
+  await sleep(1500);
   return [
     {
       id: uuid(),

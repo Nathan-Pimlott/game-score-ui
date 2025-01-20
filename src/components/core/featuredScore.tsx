@@ -1,6 +1,6 @@
 import moment from "moment";
 import { useNavigate } from "react-router";
-import { Container, Typography } from "@mui/material";
+import { Card, Grid2 as Grid, Typography } from "@mui/material";
 
 import { IScore } from "../../types";
 
@@ -12,15 +12,13 @@ export function FeaturedScore({ score }: IProps) {
   const navigate = useNavigate();
 
   return (
-    <div style={{ paddingTop: 20 }}>
-      <Container
+    <Grid size={{ xs: 12, sm: 10, md: 8, lg: 6 }} style={{ paddingTop: 20 }}>
+      <Card
         style={{
           borderRadius: 10,
-          overflow: "hidden",
-          padding: 0,
           cursor: "pointer",
-          backgroundColor: "white",
         }}
+        raised={false}
         onClick={() => {
           navigate(`/score/${score.id}`);
         }}
@@ -30,7 +28,7 @@ export function FeaturedScore({ score }: IProps) {
           style={{
             width: "100%",
             height: "auto",
-            maxHeight: 350,
+            maxHeight: 250,
             objectFit: "cover",
           }}
         />
@@ -77,7 +75,7 @@ export function FeaturedScore({ score }: IProps) {
             ))}
           </div>
         </div>
-      </Container>
-    </div>
+      </Card>
+    </Grid>
   );
 }

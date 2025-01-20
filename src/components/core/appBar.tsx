@@ -16,7 +16,7 @@ export default () => {
   const navigate = useNavigate();
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box>
       <AppBar position="static">
         <Toolbar>
           <img

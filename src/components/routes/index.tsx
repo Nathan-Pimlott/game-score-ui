@@ -7,6 +7,7 @@ import Platforms from "../platforms";
 import Platform from "../platform";
 import AToZ from "../aToZ";
 import NotFound from "../notFound";
+import Search from "../search";
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
       <Route path="/platforms" element={<Platforms />} />
       <Route path="/platform/:platformId" element={<Platform />} />
       <Route path="/a-to-z" element={<AToZ />} />
+      <Route path="/search/:searchText" element={<Search />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

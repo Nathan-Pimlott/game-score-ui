@@ -18,10 +18,7 @@ export default () => {
     },
   });
 
-  if (isPending) return <Loading />;
-
-  if (error || !platforms.length)
-    return "An error has occurred: " + error?.message;
+  if (error) return "An error has occurred: " + error?.message;
 
   return (
     <Container style={{ padding: "20px" }}>
@@ -29,13 +26,17 @@ export default () => {
       <Typography variant="h6">
         Select a platform below to view our top picks.
       </Typography>
-      <div style={{ marginTop: 10 }}>
-        <Grid container spacing={2}>
-          {platforms.map((platform, idx) => {
-            return <Platform platform={platform} key={idx} />;
-          })}
-        </Grid>
-      </div>
+      {isPending ? (
+        <Loading />
+      ) : (
+        <div style={{ marginTop: 10 }}>
+          <Grid container spacing={2}>
+            {platforms.map((platform, idx) => {
+              return <Platform platform={platform} key={idx} />;
+            })}
+          </Grid>
+        </div>
+      )}
     </Container>
   );
 };

@@ -18,24 +18,27 @@ export default () => {
     },
   });
 
-  if (isPending) return <Loading />;
-
-  if (error || !genres.length)
-    return "An error has occurred: " + error?.message;
+  if (error) return "An error has occurred: " + error?.message;
 
   return (
-    <Container style={{ padding: "20px" }}>
+    <Container
+      style={{ padding: "20px", display: "flex", flexDirection: "column" }}
+    >
       <Typography variant="h2">Genres</Typography>
       <Typography variant="h6">
         See the latest scores from each genre below.
       </Typography>
-      <div style={{ marginTop: 10 }}>
-        <Grid container spacing={2}>
-          {genres.map((genre, idx) => {
-            return <Genre genre={genre} key={idx} />;
-          })}
-        </Grid>
-      </div>
+      {isPending ? (
+        <Loading />
+      ) : (
+        <div style={{ marginTop: 10 }}>
+          <Grid container spacing={2}>
+            {genres.map((genre, idx) => {
+              return <Genre genre={genre} key={idx} />;
+            })}
+          </Grid>
+        </div>
+      )}
     </Container>
   );
 };

@@ -8,7 +8,7 @@ import { getScoresByLetter } from "../../services/score";
 import { CompactScore } from "../core/compactScore";
 
 export default () => {
-  const [selectedLetter, setSelectedLetter] = useState("P");
+  const [selectedLetter, setSelectedLetter] = useState("A");
 
   const {
     isPending,
@@ -20,13 +20,8 @@ export default () => {
     queryFn: async () => await getScoresByLetter(selectedLetter),
   });
 
-  if (isPending) return <Loading />;
-
-  if (error || !scoresByLetter.length)
-    return "An error has occurred: " + error?.message;
-
   return (
-    <Container style={{ padding: "20px" }}>
+    <Container style={{ padding: "20px", minHeight: "100%" }}>
       <Typography variant="h2">A-Z</Typography>
       <Typography variant="h6">Browse all our scores.</Typography>
       <div style={{ marginTop: 10 }}>
@@ -47,11 +42,24 @@ export default () => {
           ))}
         </Tabs>
       </div>
-      <div>
-        {scoresByLetter.map((score, idx) => (
+      {isPending ? (
+        <Loading />
+      ) : scoresByLetter && scoresByLetter.length > 0 ? (
+        scoresByLetter.map((score, idx) => (
           <CompactScore score={score} key={idx} />
-        ))}
-      </div>
+        ))
+      ) : (
+        <div style={{ height: "100%" }}>
+          <Typography
+            variant="h5"
+            style={{ textAlign: "center", margin: "auto", marginTop: 40 }}
+          >
+            {error
+              ? "An error occurred. Please try again later"
+              : "Sorry, no games found for this letter."}
+          </Typography>
+        </div>
+      )}
     </Container>
   );
 };

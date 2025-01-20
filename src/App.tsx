@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { createTheme, ThemeProvider } from "@mui/material";
+import { Container, createTheme, ThemeProvider } from "@mui/material";
 import { pink } from "@mui/material/colors";
 
 import Routes from "./components/routes";
@@ -27,9 +27,18 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
-          <div style={{ backgroundColor: "#edeff0" }}>
+          <div
+            style={{
+              backgroundColor: "#edeff0",
+              display: "flex",
+              flexDirection: "column",
+              flex: 1,
+            }}
+          >
             <AppBar />
-            <Routes />
+            <Container style={{ flex: 1 }}>
+              <Routes />
+            </Container>
             <Footer />
           </div>
         </BrowserRouter>

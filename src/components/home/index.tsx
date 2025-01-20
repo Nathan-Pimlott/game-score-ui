@@ -1,6 +1,6 @@
 import _ from "lodash";
 import { useQuery } from "@tanstack/react-query";
-import { Container, Typography } from "@mui/material";
+import { Container, Grid2, Typography } from "@mui/material";
 
 import { getFeaturedScores } from "../../services/score";
 import { FeaturedScore } from "../core/featuredScore";
@@ -18,17 +18,9 @@ export default () => {
     },
   });
 
-  if (isPending)
-    return (
-      <>
-        {_.times(3, () => (
-          <FeaturedScoreSkeleton />
-        ))}
-      </>
-    );
-
-  if (error || !featuredScores.length)
-    return "An error has occurred: " + error?.message;
+  if (error) {
+    return <div>Error!</div>;
+  }
 
   return (
     <Container style={{ padding: "20px" }}>
@@ -36,11 +28,21 @@ export default () => {
       <Typography variant="h6">
         Check out some of the games I've been playing recently.
       </Typography>
-      <div style={{ marginTop: 10 }}>
-        {featuredScores.map((featuredScore, idx) => {
-          return <FeaturedScore score={featuredScore} key={idx} />;
-        })}
-      </div>
+      <Grid2
+        container
+        direction="column"
+        style={{ marginTop: 10 }}
+        sx={{
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        {isPending || !featuredScores
+          ? _.times(3, () => <FeaturedScoreSkeleton />)
+          : featuredScores.map((featuredScore, idx) => (
+              <FeaturedScore score={featuredScore} key={idx} />
+            ))}
+      </Grid2>
     </Container>
   );
 };
