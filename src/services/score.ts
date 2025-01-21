@@ -1,39 +1,39 @@
 import { IScore } from "../types";
-import { mockFeaturedScores, mockScores } from "../utils/mock";
+import { get } from "../utils/request";
 import { sleep } from "../utils/sleep";
 
 export async function getScore(id: string): Promise<IScore | undefined> {
-  await sleep(1500);
-  return mockScores.find((ms) => ms.id === id);
+  const scoreRes = await get(`score/${id}`);
+
+  if (!scoreRes.error) {
+    return scoreRes.data.score;
+  }
 }
 
 export async function getFeaturedScores(): Promise<IScore[]> {
-  await sleep(1500);
-  return mockFeaturedScores;
-}
+  const scoreRes = await get("featured");
 
-export async function getScoresByPlatform(
-  platformId: string,
-): Promise<IScore[]> {
-  // This is not ready as platforms are stored as names rather than IDs at the minute. Returning all for now.
-  // return mockScores.filter((score) => score.playedPlatforms.includes(platformId));
-  await sleep(1500);
-  platformId;
-  return mockScores;
+  if (!scoreRes.error) {
+    return scoreRes.data.featuredScores as IScore[];
+  }
+
+  return [];
 }
 
 export async function getScoresByLetter(letter: string): Promise<IScore[]> {
-  await sleep(1500);
-  return mockScores.filter((score) => score.name.startsWith(letter));
+  console.log({ letter });
+
+  const scoreRes = await get(`scores-by-letter/${letter}`);
+  if (!scoreRes.error) {
+    return scoreRes.data.scores;
+  }
+  return [];
 }
 
-export async function getScoresBySearch(
-  searchString: string,
-): Promise<IScore[]> {
-  await sleep(1500);
-  // This logic is only basic and causes issues.
-  // Logic will be better once API is implemented.
-  return mockScores.filter((score) =>
-    score.name.toLowerCase().includes(searchString.toLowerCase()),
-  );
+export async function getScoresBySearch(searchText: string): Promise<IScore[]> {
+  const scoreRes = await get(`search?searchText=${encodeURI(searchText)}`);
+  if (!scoreRes.error) {
+    return scoreRes.data.scores;
+  }
+  return [];
 }

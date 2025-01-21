@@ -1,15 +1,24 @@
 import { IPlatform } from "../types";
-import { mockPlatforms } from "../utils/mock";
-import { sleep } from "../utils/sleep";
+import { get } from "../utils/request";
 
 export async function getPlatforms(): Promise<IPlatform[]> {
-  await sleep(1500);
-  return mockPlatforms;
+  const platformsRes = await get("/platforms");
+
+  if (platformsRes.error) {
+    throw Error("Error getting platforms. Please try again later.");
+  }
+
+  return platformsRes.data.platforms as IPlatform[];
 }
 
 export async function getPlatform(
   platformId: string,
 ): Promise<IPlatform | undefined> {
-  await sleep(1500);
-  return mockPlatforms.find((platform) => platform.id === platformId);
+  const platformsRes = await get(`/platform/${platformId}`);
+
+  if (platformsRes.error) {
+    throw Error("Error getting the platform. Please try again later.");
+  }
+
+  return platformsRes.data.platforms as IPlatform;
 }

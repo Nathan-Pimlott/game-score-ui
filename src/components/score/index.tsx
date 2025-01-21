@@ -16,9 +16,7 @@ export default () => {
     data: score,
   } = useQuery({
     queryKey: [`score-${scoreId}`],
-    queryFn: async () => {
-      return await getScore(scoreId!);
-    },
+    queryFn: async () => await getScore(scoreId!),
   });
 
   if (isPending) return <ScoreSkeleton />;
