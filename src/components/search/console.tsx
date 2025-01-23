@@ -26,12 +26,12 @@ export const Genre = ({ genre }: IProps) => {
           {genre.name}
         </Typography>
         <div style={{ padding: 10 }}>
-          {genre.examples.map((example) => (
+          {genre.featuredScores?.map((featuredScore) => (
             <Typography
-              onClick={() => navigate(`/score/${example.id}`)}
+              onClick={() => navigate(`/score/${featuredScore.id}`)}
               style={{ cursor: "pointer", marginTop: 5 }}
             >
-              {example.name}
+              {featuredScore.name}
             </Typography>
           ))}
         </div>

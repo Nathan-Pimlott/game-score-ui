@@ -67,10 +67,10 @@ export default () => {
             Completion time: {score.timeToComplete} hours
           </Typography>
           <div style={{ marginTop: 20 }}>
-            {score.playedPlatforms.map((platform, idx) => (
-              <Tooltip title={platform}>
+            {score.playedPlatforms?.map((platform, idx) => (
+              <Tooltip title={platform.name}>
                 <img
-                  src={`/src/assets/images/${platform}Logo.png`}
+                  src={`/src/assets/images/${platform.id}.png`}
                   style={{
                     height: 40,
                     width: 40,
@@ -82,26 +82,16 @@ export default () => {
             ))}
           </div>
         </div>
-        <div style={{ marginTop: 10 }}>
-          <Typography variant="h6">Overview</Typography>
-          {score.thoughts.overview.split("\n").map((line, idx) => (
-            <Typography key={idx} style={{ marginTop: 10 }}>
-              {line}
-            </Typography>
-          ))}
-          <Typography variant="h6">The good</Typography>
-          {score.thoughts.good.split("\n").map((line, idx) => (
-            <Typography key={idx} style={{ marginTop: 10 }}>
-              {line}
-            </Typography>
-          ))}
-          <Typography variant="h6">The bad</Typography>
-          {score.thoughts.bad.split("\n").map((line, idx) => (
-            <Typography key={idx} style={{ marginTop: 10 }}>
-              {line}
-            </Typography>
-          ))}
-        </div>
+        {score.thoughts?.map((thought) => (
+          <div style={{ marginTop: 10 }} key={thought.id}>
+            <Typography variant="h6">{thought.title}</Typography>
+            {thought.body?.split("\n").map((line, idx) => (
+              <Typography key={idx} style={{ marginTop: 10 }}>
+                {line}
+              </Typography>
+            ))}
+          </div>
+        ))}
       </Container>
     </div>
   );

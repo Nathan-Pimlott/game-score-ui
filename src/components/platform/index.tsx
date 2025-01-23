@@ -1,11 +1,10 @@
 import _ from "lodash";
+import { useParams } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import { Container, Typography } from "@mui/material";
 
 import { getPlatform } from "../../services/platform";
 import { Loading } from "../core/loading";
-import { useParams } from "react-router";
-import { IScore } from "../../types";
 import { CompactScore } from "../core/compactScore";
 
 export default () => {
@@ -36,7 +35,7 @@ export default () => {
       </Typography>
       <div style={{ marginTop: 10 }}>
         {/* <Grid container spacing={2}> */}
-        {platform.scores.map((score: IScore, idx: number) => {
+        {platform.featuredScores?.map((score, idx: number) => {
           return <CompactScore score={score} key={idx} />;
         })}
         {/* </Grid> */}

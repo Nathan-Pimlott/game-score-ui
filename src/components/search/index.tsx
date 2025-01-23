@@ -10,8 +10,6 @@ import { useParams } from "react-router";
 export default () => {
   const { searchText = "" } = useParams();
 
-  console.log({ searchText });
-
   const {
     isPending,
     error,

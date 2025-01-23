@@ -1,6 +1,6 @@
 import moment from "moment";
 import { useNavigate } from "react-router";
-import { Card, Grid2 as Grid, Typography } from "@mui/material";
+import { Card, Grid2 as Grid, Tooltip, Typography } from "@mui/material";
 
 import { IScore } from "../../types";
 
@@ -66,12 +66,18 @@ export function FeaturedScore({ score }: IProps) {
           </div>
 
           <div style={{ paddingTop: 10 }}>
-            {score.playedPlatforms.map((platform, idx) => (
-              <img
-                src={`/src/assets/images/${platform}Logo.png`}
-                style={{ height: 40, width: 40, paddingLeft: idx > 0 ? 10 : 0 }}
-                key={idx}
-              />
+            {score.playedPlatforms?.map((platform, idx) => (
+              <Tooltip title={platform.name}>
+                <img
+                  src={`/src/assets/images/${platform.id}.png`}
+                  style={{
+                    height: 40,
+                    width: 40,
+                    paddingLeft: idx > 0 ? 10 : 0,
+                  }}
+                  key={idx}
+                />
+              </Tooltip>
             ))}
           </div>
         </div>

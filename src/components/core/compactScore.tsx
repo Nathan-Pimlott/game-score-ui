@@ -1,11 +1,11 @@
 import moment from "moment";
 import { useNavigate } from "react-router";
-import { Paper, Typography } from "@mui/material";
+import { Paper, Tooltip, Typography } from "@mui/material";
 
-import { IScore } from "../../types";
+import { IScoreCompact } from "../../types";
 
 interface IProps {
-  score: IScore;
+  score: IScoreCompact;
 }
 
 export function CompactScore({ score }: IProps) {
@@ -70,17 +70,19 @@ export function CompactScore({ score }: IProps) {
             <div
               style={{ margin: "auto 0 0 0", paddingTop: 10, display: "flex" }}
             >
-              {score.playedPlatforms.map((platform, idx) => (
-                <img
-                  src={`/src/assets/images/${platform}Logo.png`}
-                  style={{
-                    height: 40,
-                    width: 40,
-                    paddingLeft: idx > 0 ? 10 : 0,
-                    marginTop: "auto",
-                  }}
-                  key={idx}
-                />
+              {score.playedPlatforms?.map((platform, idx) => (
+                <Tooltip title={platform.name}>
+                  <img
+                    src={`/src/assets/images/${platform.id}.png`}
+                    style={{
+                      height: 40,
+                      width: 40,
+                      paddingLeft: idx > 0 ? 10 : 0,
+                      marginTop: "auto",
+                    }}
+                    key={idx}
+                  />
+                </Tooltip>
               ))}
             </div>
           </div>
