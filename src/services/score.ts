@@ -1,26 +1,36 @@
-import {
-  IScore
-  // IScoreToCreate
-} from '../types';
-import { mockFeaturedScores } from '../utils/mock';
+import { IScore } from "../types";
+import { get } from "../utils/request";
 
-// export function getScores(): Promise<IScore[]> {
-//   return [];
-// }
+export async function getScore(id: string): Promise<IScore | undefined> {
+  const scoreRes = await get(`/score/${id}`);
 
-// export function getScore(id: string): Promise<IScore> {
-//   return {};
-// }
-
-// export function createScore(score: IScoreToCreate): Promise<IScore> {
-//   return {};
-// }
+  if (!scoreRes.error) {
+    return scoreRes.data.score;
+  }
+}
 
 export async function getFeaturedScores(): Promise<IScore[]> {
-  await await sleep(1000);
-  //do what you need here
-  return mockFeaturedScores;
+  const scoreRes = await get("/featured-scores");
+
+  if (!scoreRes.error) {
+    return scoreRes.data.featuredScores as IScore[];
+  }
+
+  return [];
 }
-function sleep(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
+
+export async function getScoresByLetter(letter: string): Promise<IScore[]> {
+  const scoreRes = await get(`/scores-by-letter/${letter}`);
+  if (!scoreRes.error) {
+    return scoreRes.data.scoresByLetter;
+  }
+  return [];
+}
+
+export async function getScoresBySearch(searchText: string): Promise<IScore[]> {
+  const scoreRes = await get(`/search?searchText=${encodeURI(searchText)}`);
+  if (!scoreRes.error) {
+    return scoreRes.data.scores;
+  }
+  return [];
 }

@@ -1,6 +1,6 @@
-import {} from 'react';
-import { Button, Container } from '@mui/material';
-import { useNavigate } from 'react-router';
+import {} from "react";
+import { Button, Container } from "@mui/material";
+import { useNavigate } from "react-router";
 
 export default () => {
   const navigate = useNavigate();
@@ -10,7 +10,7 @@ export default () => {
       <Button
         variant="contained"
         onClick={() => {
-          navigate('/');
+          navigate("/");
         }}
       >
         Home

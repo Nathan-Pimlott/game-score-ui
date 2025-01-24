@@ -28,3 +28,4 @@ cypress/screenshots
 
 # Local vars
 .env
+tsconfig.tsbuildinfo
