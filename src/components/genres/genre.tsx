@@ -1,4 +1,4 @@
-import { Card, colors, Grid2 as Grid, Typography } from "@mui/material";
+import { Card, Grid2 as Grid, Typography } from "@mui/material";
 import { IGenre } from "../../types";
 import { useNavigate } from "react-router";
 import { theme } from "../../utils/theme";
