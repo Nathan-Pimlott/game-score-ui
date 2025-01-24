@@ -1,6 +1,7 @@
 import { Card, colors, Grid2 as Grid, Typography } from "@mui/material";
 import { IGenre } from "../../types";
 import { useNavigate } from "react-router";
+import { theme } from "../../utils/theme";
 
 interface IProps {
   genre: IGenre;
@@ -23,7 +24,7 @@ export const Genre = ({ genre }: IProps) => {
         <Typography
           variant="h4"
           style={{
-            backgroundColor: colors.purple["200"],
+            backgroundColor: theme().primary.main,
             padding: 10,
             color: "white",
           }}

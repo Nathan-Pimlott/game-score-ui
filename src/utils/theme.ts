@@ -1,5 +1,8 @@
 import { useTheme } from "@mui/material";
 
 export const theme = () => ({
-  primary: useTheme().palette.primary.light,
+  primary: {
+    main: useTheme().palette.primary.main,
+    light: useTheme().palette.primary.light,
+  },
 });
